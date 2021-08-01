@@ -16,10 +16,10 @@
           <%= link_to "Homes", root_path %>
         </li>
         <li>
-          <%= link_to "User", %>
+          <%= link_to "User", users_path(current_user.id) %>
         </li>
         <li>
-          <%= link_to "Book", %>
+          <%= link_to "Book", books_path %>
         </li>
         <li>
           <%= link_to "logout", destroy_user_session_path, method: :delete %>
@@ -29,16 +29,20 @@
           <%= link_to "Homes", root_path %>
         </li>
         <li>
-          <%= link_to "About", %>
+          <%= link_to "About", home_about_path %>
         </li>
         <li>
           <%= link_to "sign up", new_user_registration_path %>
         </li>
         <li>
-          <%= link_to "login", new_user_session %>
+          <%= link_to "login", new_user_session_path %>
         </li>
       <% end %>
     </header>
     <%= yield %>
+    
+    <footer>
+      <p>CopyRight Infratop.inc</p>
+    </footer>
   </body>
 </html>
