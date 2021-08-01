@@ -1,29 +1,4 @@
-<div class="user-info">
-  <h2>User info</h2>
-  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
-    <table>
-      <thead>
-        <tr>
-          <th>name</th>
-          <th><%= current_user.name %></th>
-        </tr>
-        <tr>
-          <th>introduction</th>
-          <th><%= current_user.introduction %></th>
-        </tr>
-      </thead>
-    </table>
-    <%= link_to 'edit', edit_user_path(current_user.id) %>
-  </div>
-
-<h2>New Book</h2>
-<%= form_with model: @book, local:true do |f| %>
-  <label>Title</label>
-  <%= f.text_field :title %>
-  <label>Opinion</label>
-  <%= f.text_area :body %>
-  <%= f.submit 'Create Book' %>
-<% end %>
+<%= render 'books/list', user: @user, book: @book %>
 
 <h2>Users</h2>
 <table>
@@ -37,9 +12,9 @@
   <% @users.each do |user| %>
   <tbody>
     <tr>
-      <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
+      <td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
       <td><%= user.name %></td>
-      <td><% link_to book_path %></td>
+      <td><%= link_to 'Show', user_path(user) %></td>
     </tr>
   <% end %>
   </tbody>
