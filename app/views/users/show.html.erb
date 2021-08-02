@@ -1,15 +1,23 @@
+<%= flash[:success] %>
+
 <%= render 'books/list', user: @user, book: @book %>
 
-<h2>Book detail</h2>
+
+
+<h2>Books</h2>
 <table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+    </tr>
+  </thead>
   <% @books.each do |book| %>
   <tbody>
     <tr>
-      <td>
-        <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %><br>
-        <%= current_user.name %>
-      </td>
-      <td><%= book.title %></td>
+      <td><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></td>
+      <td><a href="/books/id"><%= book.title %></a></td>
       <td><%= book.body %></td>
     </tr>
   <% end %>
