@@ -1,4 +1,3 @@
-<%= flash[:success] %>
 
 <%= render 'books/list', user: @user, book: @book %>
 
@@ -19,7 +18,11 @@
           <tbody>
             <% @books.each do |book| %>
               <tr>
-                <td><%= attachment_image_tag @user, :profile_image, format: ' jpeg', fallback: "no_image.jpg", size: "40x40" %></td>
+                <td>
+                  <%= link_to user_path(book.user) do %>
+                   <%= attachment_image_tag book.user, :profile_image, format: ' jpeg', fallback: "no_image.jpg", size: "40x40" %>
+                  <% end %>
+                </td>
                 <td><%= link_to book.title, book_path(book) %></td>
                 <td><%= book.body %></td>
               </tr>
